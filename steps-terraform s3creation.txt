@@ -1,0 +1,52 @@
+STEP1
+FIRST INSTALL AWS CLI MSI FOR WINDOWS SETUP FILE ADDED IN DRIVE LINK
+
+STEP2
+SET ENV VARIABLE
+
+STEP3
+VERIFY WEATHER INSTALLED BY TYPING COMMAND
+
+aws --version
+
+STEP4
+configure aws providing necessary details of your access key,your secret key, region, format as json
+
+STEP5
+mkdir s3test
+cd s3test
+vi main.tf
+Click i button
+then insert this code in the main.tf editor
+
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "my-unique-bucket-name-${random_string.suffix.result}"
+  tags = {
+    Name        = "MyS3Bucket"
+    Environment = "Production"
+  }
+}
+
+resource "random_string" "suffix" {
+  length  = 8
+  special = false
+}
+
+
+
+STEP6
+MAKE SURE TERRAFORM IS INSTALLED windows version
+
+
+
+finally
+run
+
+terraform init
+terraform validate
+terraform plan
+terraform apply
+
+if to destroy
+terraform destroy
+
